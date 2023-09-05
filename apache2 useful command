@@ -1,0 +1,89 @@
+--Check Apache Version:
+
+For checking the installed version of the Apache webserver on the Linux system, use the following command:
+
+ sudo apache2 -v
+ 
+ --Display Apache compile settings:
+
+To find about the Apache compile settings use the following command:
+
+apache2 -V
+
+--Finding Syntax Errors in Apache Configuration File:
+
+ For checking Apache configuration files for finding any syntax errors on Debian-based systems before restarting the service use the following command:-
+
+ sudo apache2ctl -t
+ 
+ --Errors in Apache virtual host can be found out by using the following command below:-
+
+apache2ctl -S
+
+			------Using Apache2 Service Commands-----
+All the commands that will be discussed are applicable for Debian and Ubuntu Linux.
+
+Start Apache Service:
+
+For starting the Apache service, run the following command:
+
+sudo service apache2 start
+Restart Apache Service:
+
+For restarting the Apache service, run the following command:
+
+ sudo systemctl restart apache2
+View Apache Service Status:
+
+For viewing the Apache service, run the following command:
+
+sudo systemctl status apache2
+
+		------Apache Prefork MPM Configuration-------            
+
+Prefork is the Apache default Multi-Processing Module. When you start working as a System administrator, You generally deal with low traffic servers. You don’t need to know about how Apache handles multiple processes at one time. Even I was don’t know all about it. But after some days when you start working with high load servers and you need to optimize Apache. That time its important to know about Multi-Processing Modules in Apache and how it works
+
+Apache Prefork Default Configuration
+Below is the default Prefork Multi-Processing module configuration as below for Apache versions.
+
+For Apache 2.4
+
+StartServers 3
+MinSpareServers 5
+MaxSpareServers 10
+MaxRequestWorkers 400
+MaxConnectionsPerChild 0
+For Apache 2.2
+
+StartServers 5
+MinSpareServers 5
+MaxSpareServers 10
+MaxClients 150
+MaxRequestsPerChild 0
+Prefork Configuration Directives:
+1. StartServers: This directive defined the number of child server processes to create on Apache startup. The number of processes are dynamically increased based on server load, so you don’t need to change this value normally.
+
+2. MinSpareServers: This is minimum number of idle child processes runs by Apache, which always wait for incoming connection. If minimum idle processes is less than MinSpareServers value, Apache will start a child processes to maintain minimum spare servers.
+
+3. MaxSpareServers: This is maximum number of processes which can be in idle state. If any time idle processes are more than MaxSpareServers value, Parent process kills the extra idle child processes.
+
+4. MaxClients and MaxRequestWorkers: This is most important prefork directive. This defined maximum number of requests can be handled by Apache servers. If maximum number of connections or requests exceeds the value, All extra requests need to wait in queue.
+
+Keep this value as high as your hardware allows you. See below details, to how to set this value.
+
+a. Find of total number of RAM on your system.
+b. Find out how much RAM is available for Apache server.
+c. The average memory used by a single Apache process.
+
+Value <= ( Total Memory available for Apache) / ( Memory used by one process )5. MaxRequestsPerChild or MaxConnectionsPerChild: This is the maximum number of requests can be processed by a child process in its life. For example if you set this value to 100. Any new child process will serve up to 100 requests and then it killed by parent process. In that place Apache starts a new child processes.
+
+We recommend to keep this value higher ( At least greater than 0 ). Setting this parameter 0 means process will never expire, that may create memory leak issue and consume high memory.
+
+When to change StartServers, MinSpareServers and MinSpareServers Directives Values :
+You never need to change these directive on low traffic servers. If you are handling a server with thousands of requests per minute, Then only you need to change these values. But first you must know about frequency of new processes generation in Apache
+
+Apache 2.2 can generate one processes per second.
+Apache 2.4 can generate up to 32 processes in on second. When minimum idle spare processes are less than MinSpareServers value, Apache start 1 process and wait for one second, If it’s still less, Apache start 2 processes and wait a second, If it’s still less Apache starts 4 processes and wait for a second, similarly Apache can start-up to 32 spare child processes per second and it repeated until minimum spare process exceeded MinSpareServers value.
+For example if your server is running with Apache 2.2, then Apache can only start one spare processes per second. It means if your server is getting more than 1 connection per second, then You need to adjust all these parameters to always keep running some idle processes. But it also depends of how much time a processes takes to complete.
+
+Similarly, If server is running with Apache 2.4, Your may need to change these parameters very rarely, because Apache 2.4 can start-up to 32 chiles processes per second 
