@@ -1,0 +1,28 @@
+#swapon --show
+#free -m
+
+👉CREATING A SWAP FILE USING dd COMMAND
+ #dd if=/dev/zero of=/swapfile bs=1M count=4096
+bs--= blocksize-- = 1MB 
+Count--= blocks--= 4096 blocks
+1MB*4096= 4096MB
+
+👉SCENARIO 2
+if you change the block size to 128MB so for 4GB we will be having 32 blocks
+128MB*32= 4096MB
+#dd if=/dev/zero of=/swapfile bs=128M count=32
+
+👉UPDATE THE READ AND WRITE PERMISSIONS FOR THE SWAP FILE
+#chmod 600 /swapfile
+
+👉SETUP A LINUX SWAP AREA
+#mkswap /swapfile
+
+👉MAKE THE SWAP FILE AVAILABLE FOR IMMEDIATE USE
+#swapon /swapfile
+
+👉SETTING SWAP PERMANENTLY
+#vi /etc/fstab
+
+👉ADD THE BELOW ENTRY SAVE AND EXIT
+/swapfile     swap   swap    defaults    0    0
