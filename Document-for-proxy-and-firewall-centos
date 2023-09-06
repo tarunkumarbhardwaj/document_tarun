@@ -1,0 +1,57 @@
+sudo systemctl status nginx
+  570  yum install nnginx
+  571  yum install nginx
+  572  netstat
+  573  yum install net-tool
+  574  cat /etc/os-release 
+  575  systemctl status nginx
+  576  systemctl start nginx
+  577  systemctl status nginx
+  578  ls
+  579  netstat -tulnp
+  580  ls
+  581  cd /etc/nginx/
+  582  ls
+  583  cd conf.d/
+  584  ls
+  585  vim testnet-faucet.cmnscan.com.conf
+  586  yum install vim
+  587  vim testnet-faucet.cmnscan.com.conf
+  588  sudo systemctl restart nginx
+  589  yum install net-tools
+  590  ls
+  591  vim testnet-faucet.cmnscan.com.conf 
+  592  sudo systemctl restart nginx
+  593  systemctl status firewalld
+  594  firewall-cmd  --permanent --add-service=http
+  595  firewall-cmd  --reload
+  596  firewall-cmd  --permanent --add-service=https
+  597  firewall-cmd  --reload
+  598  setsebool -P httpd_can_network_connect 1
+  599  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  600  source "$HOME/.cargo/env"
+  601  cd
+  602  docker image
+  603  docker image search
+  604  docker image
+  605  docker images
+  606  ls
+  607  sudo dnf install epel-release
+  608  sudo yum install snapd
+  609  certbot --nginx
+  610  cd /etc/nginx/conf.d/
+  611  certbot --nginx
+  612  sudo snap install --classic certbot
+  613  snap install --classic certbot
+  614  yum install snapd
+  615  systemctl enable --now snapd.socket
+  616  sudo ln -s /var/lib/snapd/snap /snap
+  617  sudo snap install --classic certbot
+  618  certbot --nginx
+  619  cat /etc/os-release 
+  620  sudo dnf upgrade
+  621  sudo snap install --classic certbot
+  622  sudo ln -s /snap/bin/certbot /usr/bin/certbot
+  623  sudo certbot --nginx
+  624  history
+

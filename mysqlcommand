@@ -1,0 +1,53 @@
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'q7h_NwJ^^#2';
+
+
+sudo chown -R $USER:$USER /var/www/html/
+
+
+
+
+<VirtualHost *:80>
+	ServerName crm.qprimetrade.com
+	ServerAlias www.crm.qprimetrade.com
+	DocumentRoot /var/www/html
+	ErrorLog /var/log/apache2/error.log
+	CustomLog /var/log/apache2/access.log combined
+	<Directory "/var/www/">
+    	Order allow,deny
+    	Allow from all
+    	AllowOverride FileInfo All
+    	# New directive needed in Apache 2.4.3:
+    	Require all granted
+	</Directory>
+</VirtualHost>
+
+
+
+
+certbot --apache -d crm.qprimetrade.com
+
+
+https://crm.qprimetrade.com/
+
+crm.qprimetrade.com
+
+
+
+
+B_DATABASE=reelstardev_new
+DB_USERNAME=root
+DB_PASSWORD='8n+#E8/Pf}&SgALG	'
+
+
+
+
+CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'q7h_NwJ^^#2';
+GRANT PRIVILEGE ON testreel_db TO 'testuser'@'host';
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'; 
+
+
+
+
+

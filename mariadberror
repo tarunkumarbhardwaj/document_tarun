@@ -1,0 +1,26 @@
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal mysql-check-upgrade[8229]: ERROR: ld.so: object '/usr/lib64/libjemalloc.so.1' from LD_PRELOAD cannot be preloaded (cannot open shar... ignored.
+Jul 06 06:17:44 ip-172-31-31-58.ap-south-1.compute.internal systemd[1]: Started MariaDB 10.2 database server.
+
+
+printenv "LD_PRELOAD"        libjemalloc.so.1'  error comes;
+LD_PRELOAD="liblunar-calendar-preload.so" printenv "LD_PRELOAD" liblunar-calendar-preload.so
+solution
+  yum update -y
+  181  sudo yum update -y
+  182  sudo yum install epel-release
+  183  sudo amazon-linux-extras install epel
+  184  sudo yum install jemalloc -y
+  185  sudo yum update -y
+  186  printenv "LD_PRELOAD"
+  187  sudo systemctl status mariadb
+  188  sudo systemctl restart mariadb
+  189  sudo systemctl status mariadb
+

@@ -1,0 +1,37 @@
+ Use nodeproject1 domain port
+ 
+ 
+ Use htmlsslapp domain path
+ 
+ 
+ Ye bali m apni domain use kr lena
+ 
+ 
+ sudo a2enmod ssl
+13. sudo a2enmod headers
+14. sudo a2enmod http2
+15. sudo a2enmod macro     
+16. sudo a2enmod rewrite
+17. sudo a2enmod proxy
+18. sudo a2enmod proxy_http
+19. sudo a2enmod proxy_balancer
+20. sudo a2enmod lbmethod_byrequests
+
+
+
+ 
+ 
+<VirtualHost node.example.com:80>   
+    ServerName node.example.com
+    # with optional timeout settings  
+    ProxyPass / http://localhost:8000/ connectiontimeout=5 timeout=30
+</VirtualHost>
+
+
+
+<VirtualHost *:80>
+    DocumentRoot /var/www/site
+    ServerName example.com
+</VirtualHost>
+
+

@@ -1,0 +1,15 @@
+reelclient
+DB_USERNAME=reelclient
+DB_PASSWORD=mvQmX9fbL5dyItESxE
+
+
+
+
+106.201.202.120
+106.201.202.10
+
+
+
+
+find . -type f ! -name "html.2022-12-03.tar.gz" ! -name "html.2022-12-06.tar.gz" ! -name "" ! -name "" ! -name "dfi.18-12-2022" -exec rm {} \;
+find . -type f ! -name "instfx_db_01.instfx.13-03-2022.gz"  -exec rm {} \;

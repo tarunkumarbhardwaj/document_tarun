@@ -1,0 +1,35 @@
+[Solved] SoftException in Application.cpp:267: File “/home/…/public_html/index.php” is writeable by group
+Updated on : Dec 1, 2019 Category : cPanel/WHM
+You might have come across the following error in your cPanel error log  :
+
+SoftException in Application.cpp:267: File “/home/username/public_html/foldername/index.php” is writeable by group
+
+The issue is due to folder and files permission not properly set and cPanel not allowing them to run on user end.
+
+To fix this issue, simply login into server (we need SSH access to resolve this) and run the following 2 commands :
+
+
+cd /home/username/public_html
+
+Replace username by your user.
+
+
+find html -type d -exec chmod 755 {} \;
+
+find html -type f -exec chmod 644 {} \;
+
+
+
+hi Ma'am
+Good Morning
+can you please share the https://65.254.92.237:2087/ login details of crezzy domain service provider 
+mails are not working 
+need to check with support team
+
+LD_PRELOAD="liblunar-calendar-preload.so" printenv "LD_PRELOAD" liblunar-calendar-preload.so
+
+
+
+18.140.141.174
+tradeserver
+vrQpZqK9CpnFjtQ

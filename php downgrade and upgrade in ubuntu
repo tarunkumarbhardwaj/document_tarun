@@ -1,0 +1,70 @@
+apt install php8.1-cli php8.1-xml php8.1-gd php8.1-curl php8.1-mysql php8.1-ldap php8.1-zip
+a2enmod php8.1
+apt install software-properties-common
+  862  add-apt-repository ppa:ondrej/php 
+  863  apt install php7.4 
+  864  sudo apt-get install -y php7.4-cli php7.4-json php7.php74-common php7.4-mysql php7.4-zip php7.4-gd .4-mbstring php7.4-curl php7.4-xml php7.4-bcmath
+  865  php -v
+  866  php -m
+  867  a2enmod proxy_fcgi setenvif
+  868  systemctl restart apache2
+  869  a2enconf php7.4-fpm
+  870  systemctl restart apache2
+  871  systemctl reload apache2
+  872  php -v
+  873  systemctl restart php7.4-fpm
+  
+  
+  874  php -v
+  875  
+  876  php -v
+  877  apt remove --autoremove php8.0
+  878  php -v
+  879  apt remove --autoremove php8.0
+  880  apt update -y
+  881  php -v
+  882  sudo apt remove --autoremove php8.1
+  883  php -v
+  884  sudo apt remove --autoremove php8.2
+  885  php -v
+  886  curl ident.me
+  887  apt-get install php8.1
+  888  php -v
+  889  systemctl restart apache2
+  890  php -v
+  891  a2enconf php8.1-fpm
+  892  a2enconf php8.1
+  893  a2dismod php*
+  894  a2enconf php8.1
+  895  a2enmod php8.1
+  896  systemctl restart apache2
+  897  ls
+  898  cd 
+  899  find / -name backup
+  900  cd /home/rinku/
+  901  ls
+  902  mv backup/* /var/www/html
+  903  cd /var/www/html
+  904  ls
+  905  cat Dockerfile 
+  906  ls
+  907  cat Dockerfile 
+  908  cd
+  909  apt install php8.1-cli php8.1-xml php8.1-gd php8.1-curl php8.1-mysql php8.1-ldap php8.1-zip
+  910  a2enmod php8.1
+  911  php -v
+  
+  
+  sudo apt update && sudo apt install -y software-properties-common 
+sudo add-apt-repository ppa:ondrej/php 
+sudo apt update
+
+
+qprimetrade.com
+34.102.136.180
+
+
+
+
+
+sudo systemctl start php8.2-fpm.service

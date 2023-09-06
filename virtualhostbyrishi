@@ -1,0 +1,106 @@
+## NodeJsProjects Macro With * SSL ##
+## Errors Conf ##
+ErrorDocument 404 "Not Found"
+ErrorDocument 503 "Backend App Stopped"
+ErrorDocument 401 "Unauthorized"
+ErrorDocument 403 "Denied"
+ErrorDocument 500 "Bad configuration, check .htaccess / application logs"
+ErrorDocument 502 "Backend App Timeout"
+
+## All To All ##
+ServerTokens Prod
+TraceEnable Off
+ServerSignature Off
+<Directory />
+    Options All
+    Allow from all
+    Require all granted                                                                                                                                             
+</Directory>
+
+
+<Macro nodeproject1 ${project} ${nodeport}>
+<VirtualHost *:80>
+        ServerName ${project}:80
+        ServerAlias ${project}
+        DocumentRoot /home/nodeprojects/${project}
+        ServerAdmin root@localhost
+        ErrorLog ${APACHE_LOG_DIR}/${project}.error.log
+        CustomLog ${APACHE_LOG_DIR}/${project}.access.log combined
+	<Location />
+        	Allow from all 
+	</Location>
+        Redirect 301 / https://${project}/
+</VirtualHost>
+<VirtualHost *:443>
+        ServerName ${project}
+       	ServerAlias ${project}
+	DocumentRoot /home/nodeprojects/${project}
+	ErrorLog ${APACHE_LOG_DIR}/${project}.ssl_error_log
+        TransferLog ${APACHE_LOG_DIR}/${project}.ssl_access_log
+        Alias /pma /var/www/html/pma
+        LogLevel crit
+        SSLEngine on
+        SSLProtocol all -SSLv2 -SSLv3
+        SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
+        SSLCertificateFile /etc/letsencrypt/live/${project}/fullchain.pem
+        SSLCertificateKeyFile /etc/letsencrypt/live/${project}/privkey.pem
+        SetEnvIf User-Agent ".MSIE." nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+        CustomLog ${APACHE_LOG_DIR}/${project}.ssl_request_log "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
+        KeepAlive On
+	<Location />
+        	Allow from all 
+	</Location>
+	RewriteEngine On
+	RewriteCond %{HTTP:Upgrade} =websocket [NC]
+	RewriteRule /(.*)           ws://localhost:${nodeport}/$1 [P,L]
+	RewriteCond %{HTTP:Upgrade} !=websocket [NC]
+	RewriteRule /(.*)           http://localhost:${nodeport}/$1 [P,L]
+	ProxyPassReverse / http://localhost:${nodeport}/
+	Timeout 5400
+	ProxyTimeout 5400
+</VirtualHost>
+</Macro>
+
+
+<Macro htmlsslapp $domain $docroot>
+<VirtualHost *:80>
+        ServerName $domain:80
+        ServerAlias $domain
+        DocumentRoot "$docroot"
+        ServerAdmin root@localhost
+        ErrorLog ${APACHE_LOG_DIR}/$domain.error.log
+        CustomLog ${APACHE_LOG_DIR}/$domain.access.log combined
+        <Directory "$docroot/">
+            Options All
+            Allow from all
+            Require all granted
+            AllowOverride All
+       </Directory>
+         Redirect 301 / "https://$domain"
+	Protocols h2 http/1.1
+       	Header set Access-Control-Allow-Origin "https://$domain"
+    </VirtualHost>
+
+<IfModule mod_ssl.c>
+    <VirtualHost *:443>
+        ServerName $domain:443
+        ServerAlias $domain
+        ServerAdmin root@localhost
+        DocumentRoot "$docroot"
+        ErrorLog ${APACHE_LOG_DIR}/$domain.ssl_error.log
+        CustomLog ${APACHE_LOG_DIR}/$domain.ssl_access.log combined
+        <Directory "$docroot/">
+            Options All
+            Allow from all
+            Require all granted
+            AllowOverride All
+       </Directory>
+	SSLCertificateFile /etc/letsencrypt/live/$domain/fullchain.pem
+	SSLCertificateKeyFile /etc/letsencrypt/live/$domain/privkey.pem
+	#Include /etc/letsencrypt/options-ssl-apache.conf
+	Protocols h2 http/1.1
+	H2ModernTLSOnly off
+	Header set Access-Control-Allow-Origin "https://$domain"
+    </VirtualHost>
+</IfModule>
+</Macro>

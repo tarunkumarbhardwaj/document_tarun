@@ -1,0 +1,32 @@
+<VirtualHost *:80>
+	
+	ServerName crm.aiwacoin.io
+	ServerAlias www.crm.aiwacoin.io
+	
+	DocumentRoot /var/www/html/crm
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+	
+	<Directory /var/www/html/crm>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    <FilesMatch \.php$>
+      # For Apache version 2.4.10 and above, use SetHandler to run PHP as a fastCGI process server
+      SetHandler "proxy:unix:/run/php/php7.4-fpm.sock|fcgi://crm.aiwacoin.io"
+    </FilesMatch>
+
+	
+</VirtualHost>
+
+
+
+
+sudo apt-get install php7.4 php7.4-fpm php7.4-mysql libapache2-mod-php7.4 libapache2-mod-fcgid -y
+sudo systemctl status php7.4-fpm
+sudo systemctl start php7.4-fpm
+sudo a2enmod actions fcgid alias proxy_fcgi
+
+sudo systemctl restart apache2
+
