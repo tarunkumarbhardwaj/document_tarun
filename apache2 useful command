@@ -87,3 +87,28 @@ Apache 2.4 can generate up to 32 processes in on second. When minimum idle spare
 For example if your server is running with Apache 2.2, then Apache can only start one spare processes per second. It means if your server is getting more than 1 connection per second, then You need to adjust all these parameters to always keep running some idle processes. But it also depends of how much time a processes takes to complete.
 
 Similarly, If server is running with Apache 2.4, Your may need to change these parameters very rarely, because Apache 2.4 can start-up to 32 chiles processes per second 
+
+
+
+<VirtualHost *:80>
+
+        ServerName deposit.aiwacoin.io
+        ServerAlias www.deposit.aiwacoin.io
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        <Directory /var/www/>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+        ProxyPreserveHost On
+
+        ProxyPass / http://127.0.0.1:2055/
+        ProxyPassReverse / http://127.0.0.1:2055/
+
+
+
+</VirtualHost>
+

@@ -1,0 +1,77 @@
+a proces is a sorce code that is running on the system.
+all process have a process id.
+ppid ( all process have parent directory). all child process start from parent process.
+init process always have process id 1. and init process started from the kernal itself. it does not have parent directory . init server as a foster parent for orphaned process
+when a process is stops running.
+daemon -  the process started from kernal and never dies.
+Zombie - when a process is killed . but it  still show up in syestem.you can not kill these process b/c theasse already dead.
+$$ - actually $$ is a shell parameter and not a variable , you can't assign a value to it. some shell envirment variable have the information about process and $$ variable will hold the parent processs id (PPID).
+process have parent-child relationship
+
+
+fork and exec
+every process start another process in two phase ,First the process creates a fork of itself, an
+identical copy. Then the forked process executes an exec to replace the forked process with
+the target child process.
+
+
+With the exec command, you can execute a process without forking a new process. In the
+following screenshot a Korn shell (ksh) is started and is being replaced with a bash shell
+using the exec command. The pid of the bash shell is the same as the pid of the Korn
+shell. Exiting the child bash shell will get me back to the parent bash, not to the Korn shell
+(which does not exist anymore).
+
+
+
+top -- another popular tool on linux .   
+
+
+
+
+priority or nice values
+
+every process have priority or nicevalue.higher priority process will get more cpu time than lower priority process.you can influence this with nice or renice command
+
+
+process are communicate with each other via pipes, Thease can be created with mkfifo command
+
+
+The 😊️lshw tool will list hardware. With the right options lshw can show a lot of information
+about disks (and partitions).
+
+
+dmesg   show the boot message
+cat /proc/cpuinfo   show information about cpu
+free -h  show free and used memory in human reaadable form
+lshw   shows list of hardware configration
+lsblk  show the information about the block of disk
+hdparm -tT /dev/sd1   this command  show the response time to read the disk
+hdparm -i /dev/[disk]    show the detail of disk
+uname -r shows the system information
+uname -a shows kernal release information
+uptime shows the information how long time server is running
+hostame show the hostname
+hostname -i  show the ip address of the system
+last rebootshow system reboot history
+netstat -pnltushow active (listening) ports
+netstat -nutlpshow tcp and udp ports and their programs
+whois [domain]    shows the information about domain
+dig [domain]      show dns information about the doamin
+dig -x hostreverse lookup on domain
+
+
+find /usr -size +10M
+find /home -mtime +120
+find /var -atime -90
+find / -name core -exec rm {} \;
+
+
+
+
+
+
+
+
+
+
+

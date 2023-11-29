@@ -3,6 +3,7 @@
 
 👉CREATING A SWAP FILE USING dd COMMAND
  #dd if=/dev/zero of=/swapfile bs=1M count=4096
+ dd if=/dev/zero of=/swapfile bs=1M count=1024
 bs--= blocksize-- = 1MB 
 Count--= blocks--= 4096 blocks
 1MB*4096= 4096MB

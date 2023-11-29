@@ -1,4 +1,11 @@
 apt install php8.1-cli php8.1-xml php8.1-gd php8.1-curl php8.1-mysql php8.1-ldap php8.1-zip
+
+
+sudo update-alternatives --config php
+
+
+
+
 a2enmod php8.1
 apt install software-properties-common
   862  add-apt-repository ppa:ondrej/php 

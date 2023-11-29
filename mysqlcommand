@@ -1,4 +1,92 @@
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'q7h_NwJ^^#2';
+SELECT: Used to retrieve data from one or more tables. You can specify the columns you want to retrieve and apply various filtering and sorting criteria.
+
+sql
+Copy code
+:__ 						SELECT column1, column2 FROM table_name WHERE condition;
+INSERT: Used to add new records (rows) to a table.
+
+sql
+Copy code
+						INSERT INTO table_name (column1, column2) VALUES (value1, value2);
+UPDATE: Used to modify existing records in a table.
+
+sql
+Copy code
+						UPDATE table_name SET column1 = new_value1 WHERE condition;
+DELETE: Used to remove records from a table.
+
+sql
+Copy code
+						DELETE FROM table_name WHERE condition;
+CREATE DATABASE: Used to create a new database.
+
+sql
+Copy code
+						CREATE DATABASE database_name;
+CREATE TABLE: Used to create a new table within a database, specifying its columns and data types.
+
+sql
+Copy code
+				CREATE TABLE table_name (
+    					column1 datatype,
+    					column2 datatype
+				);
+ALTER TABLE: Used to modify an existing table structure, such as adding or removing columns.
+
+sql
+Copy code
+					ALTER TABLE table_name ADD column_name datatype;
+DROP DATABASE: Used to delete an existing database and all its tables and data.
+
+sql
+Copy code
+					DROP DATABASE database_name;
+DROP TABLE: Used to delete an existing table and all its data.
+
+sql
+Copy code
+					DROP TABLE table_name;
+GRANT: Used to grant specific privileges to database users.
+
+sql
+Copy code
+					GRANT privilege ON database_name.* TO 'username'@'localhost';
+REVOKE: Used to revoke previously granted privileges from database users.
+
+sql
+Copy code
+					REVOKE privilege ON database_name.* FROM 'username'@'localhost';
+SHOW DATABASES: Used to list all the databases available on the MySQL server.
+
+sql
+Copy code
+					SHOW DATABASES;
+SHOW TABLES: Used to list all the tables in the current database.
+
+sql
+Copy code
+					SHOW TABLES;
+DESCRIBE or EXPLAIN: Used to display the structure of a table, including the names and data types of its columns.
+
+sql
+Copy code
+				DESCRIBE table_name;
+USE: Used to select a specific database to work with.
+
+sql
+Copy code
+USE database_name;
+				ALTER USER: Used to modify a user's properties or password.
+
+sql
+Copy code
+				ALTER USER 'username'@'localhost' IDENTIFIED BY 'new_password';
+
+
+
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'lc,@h9yOpWP2';
 
 
 sudo chown -R $USER:$USER /var/www/html/
@@ -41,8 +129,8 @@ DB_PASSWORD='8n+#E8/Pf}&SgALG	'
 
 
 
-CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'q7h_NwJ^^#2';
-GRANT PRIVILEGE ON testreel_db TO 'testuser'@'host';
+CREATE USER 'devuser'@'localhost' IDENTIFIED BY 'q7h_NwJ11^^#2';
+GRANT ALL PRIVILEGES ON test_db TO 'devuser'@'localhost';
 
 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'; 
