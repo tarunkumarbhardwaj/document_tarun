@@ -52,7 +52,7 @@ uname -a shows kernal release information
 uptime shows the information how long time server is running
 hostame show the hostname
 hostname -i  show the ip address of the system
-last rebootshow system reboot history
+last rebootshow system reboot historyis 
 netstat -pnltushow active (listening) ports
 netstat -nutlpshow tcp and udp ports and their programs
 whois [domain]    shows the information about domain
@@ -65,6 +65,32 @@ find /home -mtime +120
 find /var -atime -90
 find / -name core -exec rm {} \;
 
+
+--------------------------------------------------------------------------------------------------------
+monitoring resoureses ;--
+cpu
+ram mamory
+storage
+network
+------------------------------------------------------------------------------------------------------
+monitoring commands 
+nmon
+htop
+top
+you can helf of monitoring tool top command , this tool monitoring ram memory , cpu and swap memory . we can also use option 1,m and t for cpu ,ram mamory,
+----------------------------------------------------------------------------------------------------
+free 
+free command is common on linux to monitoring free memory.
+You can use free to display
+information every x seconds  free -m -s 10
+-----------------------------------------------------------------------------------------------------
+watch
+------------------------------------------------------------------------------------------------------
+vmstate display information about cpu and memmory
+vmstate 2 10  give the information in every two minute till 10 times
+------------------------------------------------------------------------------------------------------
+iostat  
+ 
 
 
 

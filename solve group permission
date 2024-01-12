@@ -14,9 +14,8 @@ cd /home/username/public_html
 Replace username by your user.
 
 
-find aspirefuture -type d -exec chmod 755 {} \;
-
-find aspirefuture -type f -exec chmod 644 {} \;
+find gateway -type d -exec chmod 755 {} \;
+find gateway -type f -exec chmod 644 {} \;
 
 
 
@@ -47,5 +46,15 @@ DB_USERNAME=devclientproject_afsuser
 DB_PASSWORD="8n+#E8/Pf}&SgALG"
 
 CONFIG_BASEURL=https://dev.clientproject.net/afs/
+
+
+https://ud.webcomsystems.in/gateway/admin
+admin@digimedia
+Admin@123
+
+https://ud.webcomsystems.in/gateway/home/login
+mailto:demo@mailinator.com
+Shibu@123
+
 
 

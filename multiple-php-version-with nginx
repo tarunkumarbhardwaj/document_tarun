@@ -1,0 +1,131 @@
+How To Run Multiple PHP Versions With Nginx On Ubuntu?
+0
+Print
+You can run multiple PHP versions on Ubuntu without any issues. But you require multiple PHP versions if applications are built in different PHP versions like PHP 7.1 and PHP 7.2. 
+
+Here, we will install PHP7.0, PHP7.1, PHP7.2, and PHP7.3 on the server.
+
+1. First, we will add PPA using the command below – 
+
+# sudo apt install software-properties-common
+# sudo add-apt-repository ppa:ondrej/php
+
+2. Run the Update command. 
+
+# sudo apt update
+
+3. Install PHP 7.2 with this command.
+
+# sudo apt install php7.2 php7.2-fpm
+
+4. Install PHP extensions using this command – 
+
+# sudo apt install php7.2-mysql php7.2-mbstring php7.2-xml php7.2-gd php7.2-curl
+
+5. Now, install PHP 7.1 using this command – 
+
+# sudo apt install php7.1 php7.1-fpm
+
+6. Install common PHP7.1 extensions.
+
+# sudo apt install php7.1-mysql php7.1-mbstring php7.1-xml php7.1-gd php7.1-curl
+
+You can install PHP 7.0 as we have installed PHP 7.1 and 7.2
+
+7. Install Nginx with this command – 
+
+# sudo apt install nginx
+
+8. Create two folders to test the website with PHP 7.1 and PHP 7.2.
+
+echo "<?php phpinfo();?>" > /var/www/php72/index.php
+echo "<?php phpinfo();?>" > /var/www/php71/index.php
+
+9. We will create server blocks for both websites on Nginx.
+
+# sudo nano /etc/nginx/sites-available/php71.example.com
+
+10. Insert the following content for the site with PHP 7.1 – 
+
+# Application with PHP 7.1
+
+#
+
+server {
+
+    listen 80;
+
+ 
+
+    root /var/www/php71;
+
+    index index.php;
+
+    server_name php71.test.com;
+
+ 
+
+    location ~* \.php$ {
+
+        # With php-fpm unix sockets
+
+        fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+
+        include         fastcgi_params;
+
+        fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+
+        fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+
+    }
+
+}
+
+11. Now, create a second VirtualHost configuration file to work with PHP 7.2.
+
+# sudo nano /etc/nginx/sites-available/php72.example.com
+
+# Application with PHP 7.2
+
+#
+
+server {
+
+    listen 80;
+
+ 
+
+    root /var/www/php72;
+
+    index index.php;
+
+    server_name php72.test.com;
+
+ 
+
+    location ~* \.php$ {
+
+        # With php-fpm unix sockets
+
+        fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+
+        include         fastcgi_params;
+
+        fastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;
+
+        fastcgi_param   SCRIPT_NAME        $fastcgi_script_name;
+
+    }
+
+}
+
+12. Create a symbolic link for both config files under the /etc/nginx/sites-enabled directory. 
+
+# sudo ln -s /etc/nginx/sites-available/php71.example.com /etc/nginx/sites-enabled/
+# sudo ln -s /etc/nginx/sites-available/php72.example.com /etc/nginx/sites-enabled/
+
+13. Let us restart the Nginx. 
+
+# sudo systemctl restart nginx.service
+
+14. You can access both websites in the browser and see the different versions for each.

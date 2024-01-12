@@ -86,7 +86,12 @@ Copy code
 
 
 
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'lc,@h9yOpWP2';
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'lc@h9yOpWP2';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'lc@h97yOpWP24';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'lc@h9yOpWP2';
+sudo apt-get install php7.2 libapache2-mod-php7.2 php7.2-common php7.2-curl php7.2-mbstring php7.2-xmlrpc php7.2-mysql php7.2-gd php7.2-xml php7.2-intl php7.2-ldap php7.2-imagick php7.2-json php7.2-cli
+
+
 
 
 sudo chown -R $USER:$USER /var/www/html/
@@ -131,11 +136,12 @@ DB_PASSWORD='8n+#E8/Pf}&SgALG	'
 
 CREATE USER 'devuser'@'localhost' IDENTIFIED BY 'q7h_NwJ11^^#2';
 GRANT ALL PRIVILEGES ON test_db TO 'devuser'@'localhost';
-
+wordpress password  a1I^G#c!QTygX4X4ol
 
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost'; 
 
-
+CREATE USER 'wordpressuser'@'localhost' IDENTIFIED BY 'q7h_NwJ11^^#2';
+GRANT ALL PRIVILEGES ON *wordpress.* TO 'wordpressuser'@'localhost'; 
 
 
 
