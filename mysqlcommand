@@ -114,6 +114,35 @@ sudo chown -R $USER:$USER /var/www/html/
 	</Directory>
 </VirtualHost>
 
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+	ServerName localbfic.com
+	DocumentRoot /var/www/html2/dev1/
+	ErrorLog /var/log/apache2/localbfic-error.log
+	CustomLog /var/log/apache2/localbfic-access.log combined
+#	<FilesMatch \.php$>
+      # For Apache version 2.4.10 and above, use SetHandler to run PHP as a fastCGI process server
+#        SetHandler "proxy:unix:/run/php/php8.1-fpm.sock|fcgi://localhost"
+#        </FilesMatch>
+#	<Proxy fcgi://php8.1-fpm.sock>
+#        ProxySet connectiontimeout=600 timeout=600
+#        </Proxy>
+
+	<Directory "/var/www/html2/">
+    	Order allow,deny
+    	Allow from all
+    	AllowOverride FileInfo All
+    	# New directive needed in Apache 2.4.3:
+    	Require all granted
+	</Directory>
+
+
+
+SSLCertificateFile /etc/letsencrypt/live/localbfic.com/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/localbfic.com/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+</IfModule>
 
 
 
